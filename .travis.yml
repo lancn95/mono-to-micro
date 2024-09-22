@@ -22,8 +22,8 @@ script:
   - docker tag reverseproxy cnlan1/reverseproxy
 
 after_success:
-  - docker push "$DOCKER_USERNAME"/udagram-api-feed:latest
-  - docker push "$DOCKER_USERNAME"/udagram-api-user:latest
-  - docker push "$DOCKER_USERNAME"/udagram-frontend:latest
-  - docker push "$DOCKER_USERNAME"/udagram-reverseproxy:latest
+  - docker push cnlan1/udagram-api-feed
+  - docker push cnlan1/udagram-api-user
+  - docker push cnlan1/udagram-frontend
+  - docker push cnlan1/udagram-reverseproxy
 
