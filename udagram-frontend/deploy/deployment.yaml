@@ -1,21 +1,69 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-frontend
+  name: frontend
   labels:
-    app: udagram-frontend
+    app: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: udagram-frontend
+      app: frontend
   template:
     metadata:
       labels:
-        app: udagram-frontend
+        app: frontend
     spec:
       containers:
-        - name: udagram-frontend
+        - name: frontend
           image: cnlan1/udagram-frontend:latest
           ports:
             - containerPort: 8100
+          env:
+            # Environment variables from ConfigMap
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: POSTGRES_DB
+            - name: AWS_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: AWS_BUCKET
+            - name: AWS_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: AWS_REGION
+            - name: AWS_PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: AWS_PROFILE
+            - name: JWT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: JWT_SECRET
+            - name: URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-config
+                  key: URL
+            # Environment variables from Secret
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: POSTGRES_USERNAME
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: POSTGRES_PASSWORD
