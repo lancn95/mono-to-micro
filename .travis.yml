@@ -22,5 +22,5 @@ after_success:
   - docker push cnlan1/udagram-api-feed
   - docker push cnlan1/udagram-api-user
   - docker push cnlan1/udagram-frontend
-  - docker push cnlan1/udagram-reverseproxy
+  - docker push cnlan1/reverseproxy
 
