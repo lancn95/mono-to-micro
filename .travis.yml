@@ -16,7 +16,7 @@ before_install:
 
 script:
   - docker-compose -f docker-compose-build.yaml build --parallel
-  - docker tag udagram-frontend cnlan1/udagram-frontend
+  - docker tag udagram-frontend cnlan1/udagram-frontend:local
   - docker tag udagram-api-feed cnlan1/udagram-api-feed
   - docker tag udagram-api-user cnlan1/udagram-api-user
   - docker tag reverseproxy cnlan1/reverseproxy
