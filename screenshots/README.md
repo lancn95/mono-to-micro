@@ -7,6 +7,9 @@ To help review your infrastructure, please include the following screenshots in 
 * Travis CI showing a successful build and deploy job
 
 ## Kubernetes
+CICD:
+![Alt text](ci.png)
+![Alt text](hubs.png)
 * To verify Kubernetes pods are deployed properly
 ```bash
 kubectl get pods
